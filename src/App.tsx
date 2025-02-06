@@ -1,18 +1,18 @@
-// App.jsx
-import './App.css';
-import React from 'react';
-import Forms from './components/forms.tsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/login";
+import Booking from "./components/rooms";
+import RoomDetails from "./components/roomDetails";
 
-
-function App() {
+const App = () => {
   return (
-
-    <div className='flex w-full h-screen border-orange-400'>
-    <Forms />
-    </div>
-        
-      
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/rooms" element={<Booking />} />
+        <Route path="/room/:id" element={<RoomDetails />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
