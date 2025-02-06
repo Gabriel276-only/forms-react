@@ -33,8 +33,8 @@ const rooms = [
   },
   {
     id: 3,
-    name: "Pousada Conforto",
-    location: "Centro da cidade",
+    name: "Beira Mar",
+    location: "Próximo ao centro",
     price: 180,
     description: "Apartamento sofisticado com vista para o mar e restaurante.",
     image: "/src/assets/quartos/quarto-3.jpg",
@@ -50,8 +50,8 @@ const rooms = [
     name: "Pousada Conforto",
     location: "Rio de Janeiro",
     description: "Apartamento sofisticado com vista para o mar e restaurante.",
-    price: 180,
-    image: "/src/assets/quartos/quarto-4.jpg",
+    price: 350,
+    image: "/src/assets/quartos/quarto-4.png",
     amenities: [
       { icon: CigaretteOff, label: "Não é permitido fumar" },
       { icon: ParkingCircle, label: "Estacionamento grátis" },
@@ -61,10 +61,10 @@ const rooms = [
   },
   {
     id: 5,
-    name: "Pousada Conforto",
-    location: "Rio de Janeiro",
+    name: "Hotel Executivo Quarto Vip",
+    location: "São Paulo",
     description: "Apartamento sofisticado com vista para o mar e restaurante.",
-    price: 180,
+    price: 580,
     image: "/src/assets/quartos/quarto-5.jpg",
     amenities: [
       { icon: CigaretteOff, label: "Não é permitido fumar" },
