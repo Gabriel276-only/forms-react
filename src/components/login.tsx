@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import fundo from "../assets/img-1.jpg";
 import Google from "../assets/google-icon-logo-svgrepo-com.svg";
-import { Booking } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const Login = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -12,7 +11,6 @@ const Login = () => {
   const onSubmit = (data) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     if (isRegistering) {
-      // Cadastro
       if (users.some(user => user.email === data.email)) {
         alert("Usuário já existe!");
       } else {
@@ -23,8 +21,7 @@ const Login = () => {
         reset();
       }
     } else {
-      // Login
-      const user = users.find((user: { email: string; password: string }) => user.email === data.email && user.password === data.password);
+      const user = users.find(user => user.email === data.email && user.password === data.password);
       if (user) {
         alert("Login bem-sucedido!");
         window.location.href = "/rooms";
@@ -35,27 +32,36 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex">
+    <div className="flex flex-col md:flex-row min-h-screen w-full">
       {/* Imagem de fundo */}
-      <div className="relative w-1/2 h-screen flex flex-col">
+      <div className="relative w-full md:w-1/2 h-64 md:h-screen">
         <img src={fundo} alt="Background" className="w-full h-full object-cover" />
-        <div className="absolute top-[25%] left-[20%] bg-orange-300 p-4 rounded-l-2xl shadow-lg opacity-85 animate-slide-left">
-          <h1 className="text-4xl font-extrabold text- text-white">Turn your ideas into Reality</h1>
-          <p className="text-xl font-medium text-white mt-2">
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1 }}
+          className="absolute top-10 right-0 md:top-1/4 md:left-1/4 bg-orange-300 p-4 rounded-l-3xl shadow-lg opacity-85"
+        >
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white">Turn your ideas into Reality</h1>
+          <p className="text-sm md:text-xl font-medium text-white mt-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Formulário */}
-      <div className="w-1/2 h-screen flex flex-col p-20 justify-center">
-        <h1 className="text-xl text-black font-semibold mb-6">* Interactive Brand</h1>
-        
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="w-full md:w-1/2 flex flex-col p-6 md:p-20 justify-center"
+      >
+        <h1 className="text-lg md:text-xl text-black font-semibold mb-6">* Interactive Brand</h1>
+
         <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col">
-          <h2 className="text-2xl font-serif font-semibold mb-4">{isRegistering ? "Cadastro" : "Login"}</h2>
+          <h2 className="text-xl md:text-2xl font-serif font-semibold mb-4">{isRegistering ? "Cadastro" : "Login"}</h2>
           <p className="text-sm mb-6">{isRegistering ? "Crie sua conta." : "Bem-vindo de volta!"}</p>
-          
-          {/* Campo de e-mail */}
+
           <input 
             type="email"
             placeholder="Email"
@@ -64,7 +70,6 @@ const Login = () => {
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-          {/* Campo de senha */}
           <input 
             type="password"
             placeholder="Senha"
@@ -73,12 +78,11 @@ const Login = () => {
           />
           {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
-          {/* Botões */}
           <div className="w-full flex flex-col items-center">
-            <button type="submit" className="bg-black text-white w-full p-3 rounded-2xl m-2 hover:bg-gray-800">
+            <button type="submit" className="bg-black text-white w-full md:w-3/4 p-3 rounded-2xl m-2 hover:bg-gray-800">
               {isRegistering ? "Cadastrar" : "Login"}
             </button>
-            <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="border-2 text-black w-full p-3 rounded-2xl m-2 hover:bg-gray-200">
+            <button type="button" onClick={() => setIsRegistering(!isRegistering)} className="border-2 text-black w-full md:w-3/4 p-3 rounded-2xl m-2 hover:bg-gray-200">
               {isRegistering ? "Já tem uma conta? Login" : "Criar Conta"}
             </button>
 
@@ -87,18 +91,15 @@ const Login = () => {
               <p className="text-lg absolute bg-white px-2">ou</p>
             </div>
             
-            {/* Login com Google */}
-            <button type="button" className="border-2 text-black w-full p-2 flex items-center justify-center rounded-2xl m-2 hover:bg-gray-200"> 
+            <button type="button" className="border-2 text-black w-full sm:w-3/4 p-2 flex items-center justify-center rounded-2xl m-2 hover:bg-gray-200"> 
               <img src={Google} className="h-6 mr-2" alt="Google logo" />Login com Google
             </button>
             
-            {/* Lembrar de mim */}
             <div className="w-full flex items-center mt-2">
               <input type="checkbox" className="w-4 h-4 mr-2" />
               <p>Lembrar de mim?</p>
             </div>
             
-            {/* Esqueci a senha */}
             <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2 mt-2">Esqueceu a senha?</p>
           </div>
 
@@ -109,7 +110,7 @@ const Login = () => {
             </span>
           </p>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };

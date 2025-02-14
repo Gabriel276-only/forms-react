@@ -69,12 +69,23 @@ const Booking = () => {
   const [data, setData] = useState("");
   const [filteredRooms, setFilteredRooms] = useState(rooms);
 
+  const normalizeString = (str) => {
+    return str
+      .normalize("NFD") 
+      .replace(/[\u0300-\u036f]/g, "") 
+      .toLowerCase(); 
+  };
+  
   const procurarQuarto = () => {
+    const destinoNormalizado = normalizeString(destino);
+  
     const quartosFiltrados = rooms.filter(room =>
-      room.location.toLowerCase().includes(destino.toLowerCase())
+      normalizeString(room.location).includes(destinoNormalizado)
     );
+  
     setFilteredRooms(quartosFiltrados);
   };
+  
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
