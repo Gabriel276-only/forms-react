@@ -62,9 +62,9 @@ const ReservaForm = () => {
               Preferências:
               <select {...register("preferencia")} className="border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Nenhuma</option>
-                <option value="vista">Preferência 1</option>
-                <option value="cafe">Preferência 2</option>
-                <option value="luxo">Preferência 3</option>
+                <option value="vista">Vista para o Mar</option>
+                <option value="cafe">Café Gourmet no Quarto</option>
+                <option value="luxo">Apartamento terreo de luxo</option>
               </select>
             </label>
 
