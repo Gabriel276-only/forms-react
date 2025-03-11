@@ -117,7 +117,7 @@ const Booking = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredRooms.map((room) => (
             <div key={room.id} className="bg-white p-4 rounded-lg shadow-md">
-              <img src={room.image} alt={room.name} className="w-full rounded-md" />
+              <img src={room.image} alt={room.name} className="w-full h-60" />
               <h2 className="text-xl font-bold mt-2">{room.name}</h2>
               <p className="text-gray-600">{room.location}</p>
               <StarRating rating={room.rating} />
