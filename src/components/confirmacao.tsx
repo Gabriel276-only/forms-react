@@ -3,9 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Confirmacao = () => {
   const location = useLocation();
   const dados = location.state;
-  const navigate = useNavigate(); // Use navigate hook
+  const navigate = useNavigate();
 
-  const reservaExistente = localStorage.getItem("reserva") ? JSON.parse(localStorage.getItem("reserva") as string) : null;
+  const reservaExistente = localStorage.getItem("reserva")
+    ? JSON.parse(localStorage.getItem("reserva") as string)
+    : null;
 
   if (reservaExistente) {
     return (
@@ -24,10 +26,10 @@ const Confirmacao = () => {
         </div>
 
         <button
-          onClick={() => navigate('/')} // Navega para a página inicial
+          onClick={() => navigate('/paymentPage', { state: reservaExistente })} // Caminho correto
           className="mt-6 px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-700"
         >
-          Voltar ao Início
+          Ir ao Pagamento
         </button>
       </div>
     );
@@ -36,6 +38,10 @@ const Confirmacao = () => {
   if (!dados) {
     return <p className="text-center text-gray-700">Nenhuma reserva encontrada.</p>;
   }
+
+  const handlePagamento = () => {
+    navigate('/paymentPage', { state: dados }); // Caminho correto para redirecionar
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-200 to-green-400 p-4">
@@ -51,6 +57,13 @@ const Confirmacao = () => {
           <p className="text-gray-600"><strong>Preferência:</strong> {dados.preferencia || "Nenhuma"}</p>
         </div>
       </div>
+
+      <button
+        onClick={handlePagamento} // Redireciona para a página de pagamento
+        className="mt-6 px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-500"
+      >
+        Confirmar Pagamento
+      </button>
 
       <button
         onClick={() => navigate('/')} // Navega para a página inicial

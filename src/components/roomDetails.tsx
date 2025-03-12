@@ -1,7 +1,5 @@
-import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Wifi, ParkingCircle, Utensils, CigaretteOff } from "lucide-react";
-import ReservaForm from "./reserva";
 
 const rooms = [
   {
@@ -95,14 +93,14 @@ const RoomDetails = () => {
   
       <h1 className="text-3xl font-bold mt-4">{room.name}</h1>
       <p className="text-gray-600">{room.location}</p>
-      <p className="text-lg font-bold text-blue-600 mt-2">R$ {room.price}/noite</p>
+      <p className="text-lg font-bold text-green-600 mt-2">R$ {room.price}/noite</p>
       <p className="text-gray-700 mt-4 text-center max-w-xl">{room.description}</p>
 
      
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
         {room.amenities.map((amenity, index) => (
           <div key={index} className="flex items-center space-x-2 bg-white p-3 rounded-lg shadow-md">
-            <amenity.icon className="w-6 h-6 text-blue-600" />
+            <amenity.icon className="w-6 h-6 text-green-600" />
             <span>{amenity.label}</span>
           </div>
         ))}

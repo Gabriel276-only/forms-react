@@ -42,9 +42,9 @@ const Login = () => {
           transition={{ duration: 1 }}
           className="absolute top-10 right-0 md:top-1/4 md:left-1/4 bg-orange-300 p-4 rounded-l-3xl shadow-lg opacity-85"
         >
-          <h1 className="text-2xl md:text-4xl font-extrabold text-white">Turn your ideas into Reality</h1>
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white">Torne seus sonhos realidade</h1>
           <p className="text-sm md:text-xl font-medium text-white mt-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi beatae nisi minus recusandae  voluptates.  
           </p>
         </motion.div>
       </div>
